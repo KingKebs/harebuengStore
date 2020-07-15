@@ -15,7 +15,12 @@ app.use(express.json());
 
 // CONNECTING TO MONGODB ATLAS SERVER
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+// these are required as per new mongodb documetation
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
@@ -25,7 +30,7 @@ const exercisesRouter = require("./routes/exercises");
 const usersRouter = require("./routes/users");
 
 app.use("/exercises", exercisesRouter); // if browse to /exercises => routed to exerciseRouter
-app.use("/users", usersRouter); // if browse to /users => routed to usersRouter
+app.use("/users", usersRouter); // if browse to "/users" location  => routed to usersRouter
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

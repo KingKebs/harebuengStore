@@ -1,3 +1,5 @@
+// This is the exercises ROUTE directory
+
 const router = require("express").Router();
 let Exercise = require("../models/exercise.model");
 

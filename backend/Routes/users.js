@@ -1,6 +1,6 @@
 //
-const router = require("express").Router();
-let User = require("../models/user.model");
+const router = require("express").Router(); // we need to ROUTER() cos we created a route
+let User = require("../models/user.model"); // here we add the mongo users model
 
 // 1st router endpoint which serves http request
 router.route("/").get((req, res) => {
